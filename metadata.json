@@ -1,0 +1,16 @@
+{
+  "name": "eoly-profiles",
+  "version": "0.1.0",
+  "author": "eolsen",
+  "summary": "My puppet profiles",
+  "license": "Apache 2.0",
+  "source": "https://github.com/eoly/eoly-profiles.git",
+  "project_page": "https://github.com/eoly/eoly-profiles",
+  "issues_url": "https://github.com/eoly/eoly-profiles/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0"
+    }
+  ]
+}
