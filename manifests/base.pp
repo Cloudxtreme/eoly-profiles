@@ -1,6 +1,6 @@
 class profiles::base {
 
-  $ntp_servers = hiera('profiles::base::ntp_servers')
+  $ntp_servers = hiera('ntp_servers')
 
   validate_array($ntp_servers)
 
