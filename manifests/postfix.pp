@@ -8,6 +8,7 @@ class profiles::postfix {
   $mynetworks             = hiera('postfix_mynetworks')
   $virtual_alias_domains  = hiera('postfix_virtual_alias_domains')
   $virtual_alias_maps     = hiera('postfix_virtual_alias_maps')
+  $postfix_virtual        = hiera('postfix_virtual')
 
   class { '::postfix::server':
     myhostname            => $myhostname,
@@ -18,6 +19,10 @@ class profiles::postfix {
     mynetworks            => $mynetworks,
     virtual_alias_domains => $virtual_alias_domains,
     virtual_alias_maps    => $virtual_alias_maps,
+  }
+
+  postfix::dbfile { 'virtual':
+    content => template('profiles/postfix_virtual.erb'),
   }
   
 }
