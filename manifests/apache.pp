@@ -56,4 +56,14 @@ class profiles::apache {
     require  => Wget::Fetch['mod_cloudflare_rpm'],
   }
 
+  file { '/etc/httpd/conf.d/cloudflare.conf':
+    ensure  => present,
+    mode    => '0644',
+    owner   => 'root',
+    group   => 'root',
+    content => 'LoadModule cloudflare_module modules/mod_cloudflare.so',
+    require => Package['mod_cloudflare'],
+    notify  => Service['httpd'],
+  }
+
 }
