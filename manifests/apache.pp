@@ -6,7 +6,7 @@ class profiles::apache {
     server_signature       => 'Off',
     serveradmin            => 'webmaster@ericolsen.net',
     server_root            => '/etc/httpd',
-    keepalive              => 'Off',
+    keepalive              => 'On',
     max_keepalive_requests => '500',
     keepalive_timeout      => '15',
     mpm_module             => false,
@@ -18,9 +18,8 @@ class profiles::apache {
     startservers        => '8',
     minspareservers     => '5',
     maxspareservers     => '20',
-    serverlimit         => '4096',
-    maxclients          => '4096',
-    maxrequestsperchild => '20000',
+    maxclients          => '100',
+    maxrequestsperchild => '1000',
   }
 
   class { '::apache::mod::status':
