@@ -27,7 +27,7 @@ class profiles::apache {
     extended_status => 'On',
   }
 
-  apache::vhost { 'ericolsen.net':
+  ::apache::vhost { 'ericolsen.net':
     port              => '443',
     ip_based          => false,
     serveraliases     => [ 'www.ericolsen.net' ],
