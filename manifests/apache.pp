@@ -49,7 +49,8 @@ class profiles::apache {
     require     => Class['::apache'],
   }
 
-  package { 'mod_cloudflare':
+  package { 'mod_cloudflare.rpm':
+    ensure  => present,
     source  => '/tmp/mod_cloudflare.rpm',
     require => Wget::Fetch['mod_cloudflare_rpm'],
   }
