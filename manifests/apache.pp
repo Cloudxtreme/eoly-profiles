@@ -48,10 +48,10 @@ class profiles::apache {
     $mod_cloudflare_url = undef
     case $::operatingsystemmajrelease {
       '7':  { 
-        $mod_cloudflare_url = 'http://copr-be.cloud.fedoraproject.org/results/codeblock/mod_cloudflare/epel-7-x86_64/mod_cloudflare-1.0.3-0.1.20141106gitda8436d.fc21/mod_cloudflare-1.0.3-0.1.20141106gitda8436d.el7.centos.x86_64.rpm',
+        $mod_cloudflare_url = 'http://copr-be.cloud.fedoraproject.org/results/codeblock/mod_cloudflare/epel-7-x86_64/mod_cloudflare-1.0.3-0.1.20141106gitda8436d.fc21/mod_cloudflare-1.0.3-0.1.20141106gitda8436d.el7.centos.x86_64.rpm'
       }
       '6': {
-        $mod_cloudflare_url = 'https://www.cloudflare.com/static/misc/mod_cloudflare/centos/mod_cloudflare-el6-x86_64.latest.rpm',
+        $mod_cloudflare_url = 'https://www.cloudflare.com/static/misc/mod_cloudflare/centos/mod_cloudflare-el6-x86_64.latest.rpm'
       }
     }
 
