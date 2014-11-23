@@ -7,11 +7,11 @@ class profiles::eolsen {
   validate_array($eolsen_user[groups])
 
   user { 'eolsen':
-    ensure    => present,
-    password  => $eolsen_user[password],
-    groups    => $eolsen_user[groups],
-    mangehome => true,
-    home      => '/home/eolsen',
+    ensure     => present,
+    password   => $eolsen_user[password],
+    groups     => $eolsen_user[groups],
+    managehome => true,
+    home       => '/home/eolsen',
   }
 
   vcsrepo { '/home/eolsen/.vim':
