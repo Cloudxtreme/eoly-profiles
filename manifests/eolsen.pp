@@ -18,6 +18,7 @@ class profiles::eolsen {
     ensure   => present,
     provider => 'git',
     source   => 'https://github.com/eoly/eoly-vimrc.git',
+    user     => 'eolsen',
     require  => User['eolsen'],
   }
 
