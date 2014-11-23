@@ -39,7 +39,7 @@ class profiles::apache {
     directories       => [
       {
         path           => '/var/www/www.ericolsen.net',
-        options        => [ '-Indexes','FollowSymLinks','MultiViews' ],
+        options        => [ '-Indexes','+FollowSymLinks','+MultiViews' ],
         order          => 'Allow,Deny',
         allow_override => 'None',
       }
