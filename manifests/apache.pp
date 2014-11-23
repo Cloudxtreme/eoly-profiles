@@ -43,4 +43,15 @@ class profiles::apache {
     ],
   }
 
+  ::wget::fetch { 'mod_cloudflare_rpm':
+    source      => 'http://copr-be.cloud.fedoraproject.org/results/codeblock/mod_cloudflare/epel-7-x86_64/mod_cloudflare-1.0.3-0.1.20141106gitda8436d.fc21/mod_cloudflare-1.0.3-0.1.20141106gitda8436d.el7.centos.x86_64.rpm',
+    destination => '/tmp/mod_cloudflare.rpm',
+    require     => Class['::apache'],
+  }
+
+  package { 'mod_cloudflare':
+    source  => '/tmp/mod_cloudflare.rpm',
+    require => Wget::Fetch['mod_cloudflare_rpm'],
+  }
+
 }
