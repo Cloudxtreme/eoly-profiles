@@ -28,13 +28,10 @@ class profiles::apache {
   }
 
   ::apache::vhost { 'ericolsen.net':
-    port              => '443',
+    port              => '80',
     ip_based          => false,
     serveraliases     => [ 'www.ericolsen.net' ],
     access_log_format => 'combined',
-    ssl               => true,
-    ssl_protocol      => '-All +SSLv3 +TLSv1',
-    ssl_cipher        => 'ALL:!aNULL:!ADH:!eNULL:!LOW:!EXP:RC4+RSA:+HIGH:+MEDIUM',
     docroot           => '/var/www/www.ericolsen.net',
     directories       => [
       {
