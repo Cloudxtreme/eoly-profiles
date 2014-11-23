@@ -43,7 +43,7 @@ class profiles::apache {
     ],
   }
 
-  if $::osfamily == 'RedHat' {
+  if $::osfamily == 'RedHat' and $::architecture == 'x86_64' {
 
     case $::operatingsystemmajrelease {
       '7':  { 
