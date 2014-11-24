@@ -6,7 +6,7 @@ class profiles::base {
 
   validate_array($ntp_servers)
 
-  class { 'ntp':
+  class { '::ntp':
     servers => $ntp_servers,
   }
 
