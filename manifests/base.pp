@@ -1,11 +1,15 @@
 class profiles::base {
 
   $ntp_servers = hiera('ntp_servers')
+  $user_groups = hiera('user_groups')
 
-  validate_array($ntp_servers)
+  validate_array($::profiles::base::ntp_servers)
+  validate_hash($::profiles::base::user_groups)
 
   class { 'ntp':
-    servers => $ntp_servers,
+    servers => $::profiles::base::ntp_servers,
   }
+
+  create_resources(group,$::profiles::base::user_groups)
 
 }

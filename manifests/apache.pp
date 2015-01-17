@@ -33,6 +33,8 @@ class profiles::apache {
     serveraliases     => [ 'www.ericolsen.net' ],
     access_log_format => 'combined',
     docroot           => '/var/www/www.ericolsen.net',
+    docroot_group     => 'webdev',
+    docroot_mode      => '0775',
     directories       => [
       {
         path           => '/var/www/www.ericolsen.net',
