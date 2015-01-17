@@ -1,5 +1,7 @@
 class profiles::base {
 
+  include ::epel
+
   $ntp_servers = hiera('ntp_servers')
   $user_groups = hiera('user_groups')
 
