@@ -17,7 +17,8 @@ class profiles::redis {
     redis_memory => '1g',
     redis_ip     => '0.0.0.0',
     redis_port   => 6380,
-    running      => true,
+    running      => false,
+    enabled      => false,
   }
   
 }
