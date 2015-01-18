@@ -16,6 +16,11 @@ class profiles::elasticsearch {
   }
   contain '::elasticsearch'
 
+  elasticsearch::plugin{'elasticsearch/marvel/latest':
+    module_dir => 'marvel',
+    instances  => keys($::profiles::elasticsearch::instances)
+  }
+
   file { '/usr/share/elasticsearch/tmp':
     ensure  => directory,
     mode    => '0770',
