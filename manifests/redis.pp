@@ -1,6 +1,7 @@
 class profiles::redis {
 
   class { '::redis::install':
+    redis_version => present,
     redis_package => true,
   }
   contain '::redis::install'
