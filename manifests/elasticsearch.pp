@@ -11,7 +11,7 @@ class profiles::elasticsearch {
     java_install      => false,
     autoupgrade       => false,
     restart_on_change => false,
-    status            => 'disabled',
+    status            => 'enabled',
     datadir           => '/var/lib/elasticsearch',
   }
   contain '::elasticsearch'
