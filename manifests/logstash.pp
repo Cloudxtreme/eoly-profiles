@@ -4,7 +4,7 @@ class profiles::logstash {
 
   class { '::logstash':
     ensure            => present,
-    status            => 'enabled'
+    status            => 'enabled',
     manage_repo       => true,
     repo_version      => '1.4',
     java_install      => false,
