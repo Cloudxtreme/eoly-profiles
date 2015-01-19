@@ -8,7 +8,7 @@ class profiles::ddclient {
  }
 
  staging::extract { 'ddclient.zip':
-  target  => '/opt/staging/ddclient',
+  target  => '/opt/staging/ddclient.zip',
   creates => '/opt/staging/ddclient-master',
   require => Staging::File['ddclient.zip'],
  }
