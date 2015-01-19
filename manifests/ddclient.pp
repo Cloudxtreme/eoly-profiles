@@ -10,8 +10,4 @@ class profiles::ddclient {
   source => $::profiles::ddclient::source_url
  }
 
- staging::extract { 'ddclient.zip':
-  require => Staging::File['ddclient.zip'],
- }
-  
 }
