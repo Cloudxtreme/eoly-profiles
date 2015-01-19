@@ -6,7 +6,9 @@ class profiles::ddclient {
  $target_dir  = '/opt/staging'
  $target_file = 'ddclient.zip'
  $target      = "$::profiles::ddclient::download_dir/$::profiles::ddclient::file_name"
- $extracted   = 'ddclient-master'
+ $extracted     = "$::profiles::ddclient::target_dir/ddclient-master"
+ $config_source = "$::profiles::ddclient::extracted/sample-etc_ddclient.conf"
+ $init_source   = "$::profiles::ddclient::extracted/sample-etc_rc.d_init.d_ddclient.redhat"
 
  package { $::profiles::ddclient::packages:
    ensure => present
@@ -27,7 +29,7 @@ class profiles::ddclient {
  staging::extract { $::profiles::ddclient::target_file:
    source  => $::profiles::ddclient::target,
    target  => $::profiles::ddclient::target_dir,
-   creates => "$::profiles::ddclient::target_dir/$::profiles::ddclient::extracted",
+   creates => $::profiles::ddclient::extracted,
    require => Staging::File[$::profiles::ddclient::target_file],
  }
 
