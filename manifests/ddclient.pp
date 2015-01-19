@@ -1,7 +1,7 @@
 class profiles::ddclient {
 
  $source_url = "https://github.com/wimpunk/ddclient/archive/master.zip"
- $packages = [ 'perl-json' ]
+ $packages = [ 'perl-JSON' ]
 
  package { $::profiles::ddclient::packages:
    ensure => present
