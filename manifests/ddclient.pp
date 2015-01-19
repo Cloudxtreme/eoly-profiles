@@ -2,7 +2,7 @@ class profiles::ddclient {
 
  $packages = [ 'perl-JSON','perl-JSON-Any' ]
 
- $source      = "https://github.com/wimpunk/ddclient/archive/master.zip"
+ $source_url  = "https://github.com/wimpunk/ddclient/archive/master.zip"
  $target_dir  = '/opt/staging'
  $target_file = 'ddclient.zip'
  $target      = "$::profiles::ddclient::download_dir/$::profiles::ddclient::file_name"
