@@ -1,6 +1,11 @@
 class profiles::ddclient {
 
  $source_url = "https://github.com/wimpunk/ddclient/archive/master.zip"
+ $packages = [ 'perl-json' ]
+
+ package { $::profiles::ddclient::packages:
+   ensure => present
+ }
 
  staging::file { 'ddclient.zip':
    source => $::profiles::ddclient::source_url,
