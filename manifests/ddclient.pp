@@ -1,22 +1,34 @@
 class profiles::ddclient {
 
- $source_url = "https://github.com/wimpunk/ddclient/archive/master.zip"
  $packages = [ 'perl-JSON','perl-JSON-Any' ]
+
+ $source      = "https://github.com/wimpunk/ddclient/archive/master.zip"
+ $target_dir  = '/opt/staging'
+ $target_file = 'ddclient.zip'
+ $target      = "$::profiles::ddclient::download_dir/$::profiles::ddclient::file_name"
+ $extracted   = 'ddclient-master'
 
  package { $::profiles::ddclient::packages:
    ensure => present
  }
 
- staging::file { 'ddclient.zip':
-   source => $::profiles::ddclient::source_url,
-   target => '/opt/staging/ddclient.zip',
+ file { '/etc/ddclient':
+   ensure => directory,
+   owner  => 'root',
+   group  => 'root',
+   mode   => '0755',
  }
 
- staging::extract { 'ddclient.zip':
-   source  => '/opt/staging/ddclient.zip',
-   target  => '/opt/staging',
-   creates => '/opt/staging/ddclient-master',
-   require => Staging::File['ddclient.zip'],
+ staging::file { $::profiles::ddclient::target_file:
+   source => $::profiles::ddclient::source_url,
+   target => $::profiles::ddclient::target,
+ }
+
+ staging::extract { $::profiles::ddclient::target_file:
+   source  => $::profiles::ddclient::target,
+   target  => $::profiles::ddclient::target_dir,
+   creates => "$::profiles::ddclient::target_dir/$::profiles::ddclient::extracted",
+   require => Staging::File[$::profiles::ddclient::target_file],
  }
 
 }
