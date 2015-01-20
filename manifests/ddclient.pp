@@ -33,4 +33,18 @@ class profiles::ddclient {
    require => Staging::File[$::profiles::ddclient::target_file],
  }
 
+ exec { 'install_ddclient':
+   command => "cp $::profiles::ddclient::extracted/ddclient /usr/local/bin/ddclient",
+   require => Staging::Extract[$::profiles::ddclient::target_file],
+ }
+
+ exec { 'install_init':
+   command => "cp $::profile::ddclient::init_source /etc/init.d/ddclient",
+ }
+
+ exec { 'install_config':
+   command => "cp $::profile::ddclient::config_source /etc/ddclient/ddclient.conf",
+   require => File['/etc/ddclient'],
+ }
+
 }
