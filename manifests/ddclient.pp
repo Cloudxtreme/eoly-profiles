@@ -19,18 +19,25 @@ class profiles::ddclient {
    ensure => present
  }
 
- file { '/etc/ddclient':
-   ensure => directory,
+ File {
    owner  => 'root',
    group  => 'root',
+ }
+
+ file { '/var/cache/ddclient':
+   ensure => directory,
+   mode   => '0755',
+ }
+
+ file { '/etc/ddclient':
+   ensure => directory,
    mode   => '0755',
  } ->
 
  file { '/etc/ddclient/ddclient.conf':
    ensure  => present,
-   owner   => 'root',
-   group   => 'root',
-   content => template("${module_name}/ddclient.conf.erb")
+   mode    => '0600',
+   content => template("${module_name}/ddclient.conf.erb"),
  }
 
  staging::file { $::profiles::ddclient::target_file:
