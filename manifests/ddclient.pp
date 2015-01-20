@@ -1,6 +1,6 @@
 class profiles::ddclient {
 
- $packages = [ 'perl-JSON','perl-JSON-Any' ]
+ $packages = [ 'perl-JSON','perl-JSON-Any','perl-IO-Socket-SSL' ]
 
  $source_url  = "https://github.com/wimpunk/ddclient/archive/master.zip"
  $target_dir  = '/opt/staging'
