@@ -39,12 +39,12 @@ class profiles::ddclient {
  }
 
  exec { 'install_init':
-   command => "/bin/cp $::profile::ddclient::init_source /etc/init.d/ddclient",
+   command => "/bin/cp $::profiles::ddclient::init_source /etc/init.d/ddclient",
    require => Staging::Extract[$::profiles::ddclient::target_file],
  }
 
  exec { 'install_config':
-   command => "/bin/cp $::profile::ddclient::config_source /etc/ddclient/ddclient.conf",
+   command => "/bin/cp $::profiles::ddclient::config_source /etc/ddclient/ddclient.conf",
    require => File['/etc/ddclient'],
  }
 
