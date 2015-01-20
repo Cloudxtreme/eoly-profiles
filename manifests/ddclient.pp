@@ -46,7 +46,7 @@ class profiles::ddclient {
  }
 
  exec { 'install_ddclient':
-   command => "/bin/cp $::profiles::ddclient::extracted/ddclient /usr/local/bin/ddclient",
+   command => "/bin/cp $::profiles::ddclient::extracted/ddclient /usr/local/sbin/ddclient",
    require => Staging::Extract[$::profiles::ddclient::target_file],
  }
 
