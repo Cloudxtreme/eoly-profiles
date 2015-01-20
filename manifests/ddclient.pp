@@ -40,6 +40,7 @@ class profiles::ddclient {
 
  exec { 'install_init':
    command => "/bin/cp $::profile::ddclient::init_source /etc/init.d/ddclient",
+   require => Staging::Extract[$::profiles::ddclient::target_file],
  }
 
  exec { 'install_config':
