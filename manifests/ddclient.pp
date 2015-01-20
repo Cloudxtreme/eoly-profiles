@@ -10,6 +10,11 @@ class profiles::ddclient {
  $config_source = "$::profiles::ddclient::extracted/sample-etc_ddclient.conf"
  $init_source   = "$::profiles::ddclient::extracted/sample-etc_rc.d_init.d_ddclient.redhat"
 
+ $cloudflare_zone   = hiera('cloudflare_zone')
+ $cloudflare_login  = hiera('cloudflare_login')
+ $cloudflare_apikey = hiera('cloudflare_apikey')
+ $cloudflare_record = hiera('cloudflare_record')
+
  package { $::profiles::ddclient::packages:
    ensure => present
  }
@@ -19,6 +24,13 @@ class profiles::ddclient {
    owner  => 'root',
    group  => 'root',
    mode   => '0755',
+ } ->
+
+ file { '/etc/ddclient/ddclient.conf':
+   ensure  => present,
+   owner   => 'root',
+   group   => 'root',
+   content => template("${module_name}/ddclient.conf.erb")
  }
 
  staging::file { $::profiles::ddclient::target_file:
@@ -41,11 +53,6 @@ class profiles::ddclient {
  exec { 'install_init':
    command => "/bin/cp $::profiles::ddclient::init_source /etc/init.d/ddclient",
    require => Staging::Extract[$::profiles::ddclient::target_file],
- }
-
- exec { 'install_config':
-   command => "/bin/cp $::profiles::ddclient::config_source /etc/ddclient/ddclient.conf",
-   require => File['/etc/ddclient'],
  }
 
 }
