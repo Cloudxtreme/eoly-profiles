@@ -34,7 +34,7 @@ class profiles::ssl {
     content => $::profiles::ssl::host_key
   } ->
 
-  file { "/etc/pki/tls/certs/${::fqdn}}.crt":
+  file { "/etc/pki/tls/certs/${::fqdn}.crt":
     ensure  => file,
     mode    => '0444',
     content => $::profiles::ssl::host_cert
