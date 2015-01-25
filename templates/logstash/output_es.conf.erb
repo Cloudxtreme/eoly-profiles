@@ -3,7 +3,8 @@ output {
         action => "index"
         embedded => false
         host => "<%= @logstash_es_server %>"
-        protocol => "<%= @logstash_es_cluster %>"
+        protocol => "node"
+        cluster => "<%= @logstash_es_cluster %>"
         flush_size => 500
     }
 }
