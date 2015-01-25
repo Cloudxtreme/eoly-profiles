@@ -1,0 +1,9 @@
+output {
+    elasticsearch {
+        action => "index"
+        embedded => false
+        host => "<%= @logstash_es_server %>"
+        protocol => "<%= @logstash_es_cluster %>"
+        flush_size => 500
+    }
+}
