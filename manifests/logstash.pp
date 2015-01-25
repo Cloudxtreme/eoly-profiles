@@ -1,7 +1,7 @@
 class profiles::logstash {
 
-  $logstash_es_server     = "redis.hq.sourcecurrent.net"
-  $logstash_es_cluster    = "logstash"
+  $logstash_redis_server  = "redis.hq.sourcecurrent.net"
+  $logstash_redis_key     = "logstash"
  
   include '::profiles::java'
 
