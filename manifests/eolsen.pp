@@ -22,8 +22,4 @@ class profiles::eolsen {
     require  => User['eolsen'],
   }
 
-  rbenv::install { 'eolsen':
-    require => User['eolsen'],
-  }
-
 }
